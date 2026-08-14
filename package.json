@@ -1,0 +1,29 @@
+{
+  "name": "sehat-link",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "SEHAT LINK — AI-powered healthcare access & patient briefing platform",
+  "scripts": {
+    "dev": "concurrently -k -n server,client -c green,cyan \"node --watch server/index.js\" \"vite\"",
+    "dev:client": "vite",
+    "dev:server": "node --watch server/index.js",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pdfjs-dist": "^4.10.38",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "concurrently": "^8.2.2",
+    "playwright-core": "1.46",
+    "vite": "^5.4.0"
+  }
+}
