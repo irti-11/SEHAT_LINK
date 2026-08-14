@@ -40,8 +40,16 @@ app.get('*', (req, res, next) => {
 })
 
 const port = process.env.PORT || 3001
-app.listen(port, () => {
-  console.log(`\n  SEHAT LINK server ready`)
-  console.log(`  API:      http://localhost:${port}/api`)
-  console.log(`  AI mode:  ${describeService().mode}\n`)
-})
+
+// Vercel runs this as a serverless function (api/index.js imports the app).
+// Only bind a port when running as a standalone server (local / `npm start`).
+if (process.env.VERCEL !== '1') {
+  app.listen(port, () => {
+    console.log(`\n  SEHAT LINK server ready`)
+    console.log(`  API:      http://localhost:${port}/api`)
+    console.log(`  AI mode:  ${describeService().mode}\n`)
+  })
+}
+
+export default app
+export { app }
